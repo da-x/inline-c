@@ -5,6 +5,9 @@
 import           Foreign.C.Types
 import qualified Language.C.Inline as C
 import qualified Language.C.Inline.Unsafe as CU
+import           Data.Monoid                  ((<>))
+
+C.context (C.baseCtx <> C.bsCtx)
 
 C.include "<math.h>"
 C.include "<stdio.h>"
