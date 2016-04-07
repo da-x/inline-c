@@ -160,8 +160,6 @@ setContext :: Context -> TH.Q ()
 setContext ctx = do
   thisModule <- getModuleId
   moduleStates <- TH.runIO $ readMVar moduleStatesVar
-  forM_ (Map.lookup thisModule moduleStates) $ \_ms ->
-    fail "inline-c: The module has already been initialised (setContext)."
   void $ initialiseModuleState $ Just ctx
 
 bumpGeneratedNames :: TH.Q Int
